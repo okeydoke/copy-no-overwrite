@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.1",
   "name": "copy-no-overwrite",
   "main": "index.js",
   "description": "Copies a file or directory without overwriting any existing files. (apparently no other libraries do this correctly)",
