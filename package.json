@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "name": "copy-no-overwrite",
+  "main": "index.js",
+  "description": "Copies a file or directory without overwriting any existing files. (apparently no other libraries do this correctly)",
+  "author": {
+    "name": "Jesse Lamb",
+    "email": "jesse@okeydoke.net"
+  },
+  "license": "ISC",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/okeydoke/copy-no-overwrite.git"
+  },
+  "scripts": {
+  },
+  "dependencies": {
+
+  },
+  "keywords": [
+    "copy",
+    "no-overwrite"
+  ]
+}
