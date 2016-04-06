@@ -29,26 +29,28 @@ function copyFile(srcFile, destFile) {
 
 function copy(src, dest) {
 
-  var stats = fs.lstatSync(src);
+  var stats = fs.statSync(src); //fs.lstatSync(src);
   var destFolder = path.dirname(dest);
   var destFolderExists = fs.existsSync(destFolder);;
   var performCopy = false;
 
   if (stats.isFile()) {
     if (!destFolderExists) {
-      mkdir.mkdirs(destFolder);
+      console.log('dosentExisit');
+      mkdirs(destFolder);
     }
+      console.log(src, dest, destFolder, destFolderExists);
 
     copyFile(src, dest);
 
   } else if (stats.isDirectory()) {
     if (!fs.existsSync(dest)) {
-      mkdir.mkdirsSync(dest);
+      mkdirs(dest);
     }
     var contents = fs.readdirSync(src);
 
     contents.forEach(function (content) {
-      copySync( path.join(src, content), path.join(dest, content) );
+      copyFile( path.join(src, content), path.join(dest, content) );
     });
 
   } else if (stats.isSymbolicLink()) {
@@ -59,7 +61,8 @@ function copy(src, dest) {
 
 
 var o777 = parseInt('0777', 8)
-function mkdirsSync (_path, opts, made) {
+function mkdirs (_path, opts, made) {
+  console.log('mkdirs');
   if (!opts || typeof opts !== 'object') {
     opts = { mode: opts };
   }
@@ -83,8 +86,8 @@ function mkdirsSync (_path, opts, made) {
 
     switch (err0.code) {
       case 'ENOENT' :
-        made = mkdirsSync(path.dirname(_path), opts, made);
-        mkdirsSync(_path, opts, made);
+        made = mkdirs(path.dirname(_path), opts, made);
+        mkdirs(_path, opts, made);
         break;
 
       // In the case of any other error, just see if there's a dir
